@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { getAllTables } from "../../../redux/tablesRedux";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import CustomButton from "../../common/CustomButton";
 
 const AllTables = () => {
 
@@ -15,7 +15,7 @@ const AllTables = () => {
             <strong>Table {table.id}</strong> Status: {table.status}
           </div>
           <Link to={`/table/${table.id}`}>
-            <Button variant="primary">Show more</Button>
+            <CustomButton>Show more</CustomButton>
           </Link>
         </div>
       ))}
@@ -23,4 +23,4 @@ const AllTables = () => {
   )
 }
 
-export default AllTables
+export default AllTables;
