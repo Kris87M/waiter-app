@@ -92,12 +92,12 @@ const ActiveTable = () => {
             <Form.Control value={ maxPeopleAmount} style={{ maxWidth: 100 }} type="number" max={10} onChange={e => handleMaxPeopleAmount(e.target.value)}></Form.Control>
           </div>
         </Form.Group>
-
-        <Form.Group className="d-flex align-items-center mb-3" controlId="bill">
-          <Form.Label className="me-3"><strong>Bill:</strong></Form.Label>
-          <span className="mx-2">$</span>
-          <Form.Control value={ bill } style={{ maxWidth: 100 }} type="number" onChange={e => setBill(e.target.value)}></Form.Control>
-        </Form.Group>
+        {status === 'Busy' && (
+          <Form.Group className="d-flex align-items-center mb-3" controlId="bill">
+            <Form.Label className="me-3"><strong>Bill:</strong></Form.Label>
+            <span className="mx-2">$</span>
+            <Form.Control value={bill} style={{ maxWidth: 100 }} type="number" onChange={e => setBill(e.target.value)}></Form.Control>
+          </Form.Group>)}
 
         <CustomButton type="submit">Update</CustomButton>
 
