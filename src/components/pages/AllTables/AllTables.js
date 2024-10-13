@@ -2,10 +2,20 @@ import { useSelector } from "react-redux";
 import { getAllTables } from "../../../redux/tablesRedux";
 import { Link } from "react-router-dom";
 import CustomButton from "../../common/CustomButton";
+import { Spinner } from "react-bootstrap";
 
 const AllTables = () => {
 
   const tables = useSelector(getAllTables);
+
+  if (!tables.length) { // Sprawdzenie, czy nie ma tabel
+    return (
+      <div className="text-center mt-5">
+        <Spinner animation="border" variant="primary"/>
+        <p>Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div>

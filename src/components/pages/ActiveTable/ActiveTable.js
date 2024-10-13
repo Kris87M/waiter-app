@@ -2,7 +2,7 @@ import CustomButton from "../../common/CustomButton";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getTableById, updateTablesRequest } from "../../../redux/tablesRedux";
-import { Container, Form } from "react-bootstrap";
+import { Container, Form, Spinner } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 const ActiveTable = () => {
@@ -17,6 +17,7 @@ const ActiveTable = () => {
   const [peopleAmount, setPeopleAmount] = useState(activeTable.peopleAmount);
   const [maxPeopleAmount, setMaxPeopleAmount] = useState(activeTable.maxPeopleAmount);
   const [bill, setBill] = useState(activeTable.bill);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!activeTable) {
@@ -52,8 +53,21 @@ const ActiveTable = () => {
       peopleAmount: peopleAmount > maxPeopleAmount ? maxPeopleAmount : peopleAmount,
       bill: status === 'Busy' ? bill : 0,
     }
-    dispatch(updateTablesRequest(updatedTable));
-    navigate('/');
+    setLoading(true);
+    setTimeout(() => {
+      dispatch(updateTablesRequest(updatedTable));
+      setLoading(false);
+      navigate('/');
+    }, 1000);
+  };
+
+    if (loading) {
+    return (
+      <div className="text-center mt-5">
+        <Spinner animation="border" variant="primary"/>
+        <p>Updating...</p>
+      </div>
+    );
   }
 
   return (
