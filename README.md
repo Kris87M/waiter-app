@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Link to the Application
+
+You can see a working version of the project on Replit at the following link:
+https://a3e57eab-71e9-4ceb-9a2c-9e9fd712f6e4-00-13wftrj98vb4b.picard.replit.dev/
+
 ## Available Scripts
 
 In the project directory, you can run:
