@@ -34,9 +34,10 @@ const ActiveTable = () => {
     }
   }, [status, setPeopleAmount]);
 
-  const handlePeopleAmount = value => {
-    setPeopleAmount(value > maxPeopleAmount ? maxPeopleAmount : Math.max(0, Math.min(value, 10)));
-  }
+const handlePeopleAmount = value => {
+  setPeopleAmount(Math.max(0, Math.min(value, maxPeopleAmount)));
+};
+
 
   const handleMaxPeopleAmount = value => {
     setMaxPeopleAmount(Math.max(0, Math.min(value, 10)));
